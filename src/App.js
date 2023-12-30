@@ -10,6 +10,8 @@ const App = () => {
     confirmPassword: "",
   });
 
+  const [isSubmitted, setIsSubmitted] = useState(false); // New state variable
+
   const inputs = [
     {
       id: 1,
@@ -31,7 +33,6 @@ const App = () => {
       label: "Email",
       required: true,
     },
-
     {
       id: 4,
       name: "password",
@@ -57,6 +58,13 @@ const App = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Add your validation logic here
+    // For simplicity, let's assume that validation is successful
+    // In a real-world scenario, you would perform more comprehensive validation
+
+    // Update the state to indicate that the form has been submitted successfully
+    setIsSubmitted(true);
   };
 
   const onChange = (e) => {
@@ -76,6 +84,13 @@ const App = () => {
           />
         ))}
         <button>Submit</button>
+
+        {/* Conditional rendering of success message */}
+        {isSubmitted && (
+          <div className="success-message">
+            <p>Registration successful! Thank you for signing up.</p>
+          </div>
+        )}
       </form>
     </div>
   );
